@@ -24,7 +24,14 @@
     "test": "vitest run"
   },
   "repository": "https://github.com/zotera/esbuild-yaml",
-  "keywords": [],
+  "keywords": [
+    "esbuild",
+    "plugin",
+    "yaml",
+    "yaml import",
+    "yaml plugim",
+    "yaml esbuild"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zotera/esbuild-yaml/issues"
