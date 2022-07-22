@@ -1,12 +1,6 @@
 <h1 align="center">YAML Plugin</h1>
 
 This plugin allows you to import YAML files with ESBUILD
-
-> NOTE:
-> This plugin does not parse the yaml when imported.
-> <br/>
-> If you want the YAML to get parsed, you can check this plugin out [YAML Plugin](https://github.com/martonlederer/esbuild-plugin-yaml)
-
 <br/>
 <br/>
 
@@ -29,5 +23,29 @@ const yourConfig = {};
 esbuild.build({
   ...yourConfig,
   plugins: [YAMLPlugin()]
+});
+```
+
+## 📚 Configuration
+
+> output defaults to `json`
+
+```js
+const YAMLPlugin = require('@zotera/esbuild-yaml');
+
+// Output as text
+YAMLPlugin({
+  output: 'text',
+  parserOptions: {
+    // Options from js-yaml
+  }
+});
+
+// Output as JSON
+YAMLPlugin({
+  output: 'json',
+  parserOptions: {
+    // Options from js-yaml
+  }
 });
 ```

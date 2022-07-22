@@ -5,5 +5,7 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   clean: true,
   splitting: false,
-  dts: true
+  dts: {
+    banner: '/// <reference path="../yaml.d.ts" />'
+  }
 });

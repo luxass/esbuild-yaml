@@ -1,10 +1,14 @@
 import type { Plugin } from 'esbuild';
-import { promises } from 'fs';
+import fs from 'fs';
+import yaml, { type LoadOptions } from 'js-yaml';
 import path from 'path';
 
-const readFile = promises.readFile;
+export interface YAMLPluginOptions {
+  parserOptions?: LoadOptions;
+  output?: 'json' | 'text';
+}
 
-const YAMLPlugin = (): Plugin => ({
+const YAMLPlugin = ({ output, parserOptions }: YAMLPluginOptions = { output: 'json' }): Plugin => ({
   name: 'yaml',
   setup(build) {
     build.onResolve({ filter: /\.(yml|yaml)$/ }, (args) => {
@@ -17,7 +21,15 @@ const YAMLPlugin = (): Plugin => ({
     });
 
     build.onLoad({ filter: /.*/, namespace: 'yaml' }, async (args) => {
-      const yamlContent = await readFile(args.path, 'utf8');
+      const yamlContent = await fs.promises.readFile(args.path, 'utf8');
+
+      if (output === 'json') {
+        const parsed = yaml.load(yamlContent, parserOptions);
+        return {
+          loader: 'json',
+          contents: JSON.stringify(parsed)
+        };
+      }
 
       return {
         contents: yamlContent,

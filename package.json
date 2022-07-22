@@ -13,7 +13,8 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "yaml.d.ts"
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -53,5 +54,8 @@
     "typescript": "^4.7.4",
     "vitest": "^0.18.1"
   },
-  "packageManager": "pnpm@7.5.0"
+  "packageManager": "pnpm@7.5.0",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
 }
