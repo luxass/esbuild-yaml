@@ -1,30 +1,23 @@
 {
-  "name": "@zotera/esbuild-yaml",
+  "name": "@luxass/esbuild-yaml",
   "version": "0.1.0",
-  "description": "A esbuild plugin, that allows imports of YAML files",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    }
+  "description": "An esbuild plugin, that allows imports of YAML files",
+  "type": "module",
+  "author": {
+    "name": "Lucas Nørgård",
+    "email": "lucasnrgaard@gmail.com",
+    "url": "https://luxass.dev"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "yaml.d.ts"
-  ],
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "format": "prettier --write --cache .",
-    "lint": "eslint --cache {src,test}/**/*.ts",
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "test": "vitest run"
+  "packageManager": "pnpm@8.12.0",
+  "license": "MIT",
+  "homepage": "https://github.com/luxass/esbuild-yaml",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxass/esbuild-yaml"
   },
-  "repository": "https://github.com/zotera/esbuild-yaml",
+  "bugs": {
+    "url": "https://github.com/luxass/esbuild-yaml/issues"
+  },
   "keywords": [
     "esbuild",
     "plugin",
@@ -33,30 +26,50 @@
     "yaml plugim",
     "yaml esbuild"
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zotera/esbuild-yaml/issues"
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
   },
-  "homepage": "https://github.com/zotera/esbuild-yaml#readme",
-  "author": {
-    "name": "Lucas Norgaard",
-    "email": "lucasnrgaard@gmail.com",
-    "url": "https://luxass.dev"
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "yaml.d.ts"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint . --report-unused-disable-directives",
+    "typecheck": "tsc --noEmit"
   },
-  "devDependencies": {
-    "@luxass/eslint-config": "^1.0.6",
-    "@luxass/prettier-config": "^1.0.4",
-    "@types/js-yaml": "^4.0.5",
-    "@types/node": "^18.0.3",
-    "esbuild": "^0.14.49",
-    "eslint": "^8.20.0",
-    "prettier": "^2.7.1",
-    "tsup": "^6.1.3",
-    "typescript": "^4.7.4",
-    "vitest": "^0.18.1"
+  "peerDependencies": {
+    "esbuild": ">=0.18"
   },
-  "packageManager": "pnpm@7.5.0",
   "dependencies": {
     "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@luxass/eslint-config": "^4.0.0-beta.16",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.10.4",
+    "esbuild": "^0.18.20",
+    "eslint": "^8.55.0",
+    "eslint-plugin-format": "^0.1.0",
+    "prettier": "^3.1.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.2"
   }
 }

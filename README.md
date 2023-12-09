@@ -1,4 +1,7 @@
-<h1 align="center">YAML Plugin</h1>
+# esbuild-plugin-yaml
+
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
 
 This plugin allows you to import YAML files with ESBUILD
 <br/>
@@ -7,7 +10,7 @@ This plugin allows you to import YAML files with ESBUILD
 ## 📦 Installation
 
 ```sh
-npm install --save-dev @zotera/esbuild-yaml
+npm install --save-dev @luxass/esbuild-yaml
 ```
 
 ## 📚 Usage
@@ -15,8 +18,8 @@ npm install --save-dev @zotera/esbuild-yaml
 Add this to your build file
 
 ```js
-const esbuild = require('esbuild');
-const YAMLPlugin = require('@zotera/esbuild-yaml');
+const esbuild = require("esbuild");
+const YAMLPlugin = require("@luxass/esbuild-yaml");
 
 const yourConfig = {};
 
@@ -31,11 +34,11 @@ esbuild.build({
 > output defaults to `json`
 
 ```js
-const YAMLPlugin = require('@zotera/esbuild-yaml');
+const YAMLPlugin = require("@luxass/esbuild-yaml");
 
 // Output as text
 YAMLPlugin({
-  output: 'text',
+  output: "text",
   parserOptions: {
     // Options from js-yaml
   }
@@ -43,9 +46,20 @@ YAMLPlugin({
 
 // Output as JSON
 YAMLPlugin({
-  output: 'json',
+  output: "json",
   parserOptions: {
     // Options from js-yaml
   }
 });
 ```
+
+## 📄 License
+
+Published under [MIT License](./LICENSE).
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@luxass/esbuild-plugin-yaml?style=flat&colorA=18181B&colorB=4169E1
+[npm-version-href]: https://npmjs.com/package/@luxass/esbuild-plugin-yaml
+[npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/esbuild-plugin-yaml?style=flat&colorA=18181B&colorB=4169E1
+[npm-downloads-href]: https://npmjs.com/package/@luxass/esbuild-plugin-yaml

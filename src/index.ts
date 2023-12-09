@@ -1,42 +1,61 @@
-import type { Plugin } from 'esbuild';
-import fs from 'fs';
-import yaml, { type LoadOptions } from 'js-yaml';
-import path from 'path';
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import type { Plugin } from "esbuild";
+import yaml, { type LoadOptions } from "js-yaml";
 
 export interface YAMLPluginOptions {
-  parserOptions?: LoadOptions;
-  output?: 'json' | 'text';
+  /**
+   * Options to pass to the YAML parser.
+   * @see https://github.com/nodeca/js-yaml
+   */
+  parserOptions?: LoadOptions
 }
 
-const YAMLPlugin = ({ output, parserOptions }: YAMLPluginOptions = { output: 'json' }): Plugin => ({
-  name: 'yaml',
-  setup(build) {
-    build.onResolve({ filter: /\.(yml|yaml)$/ }, (args) => {
-      if (args.resolveDir === '') return;
+export function YAMLPlugin({ parserOptions }: YAMLPluginOptions = {}): Plugin {
+  return {
+    name: "yaml",
+    setup(build) {
+      build.onResolve({ filter: /\.ya?ml$/ }, (args) => {
+        if (args.resolveDir === "") return;
 
-      return {
-        path: path.isAbsolute(args.path) ? args.path : path.join(args.resolveDir, args.path),
-        namespace: 'yaml'
-      };
-    });
+        return {
+          path: path.isAbsolute(args.path) ? args.path : path.join(args.resolveDir, args.path),
+          namespace: "yaml",
+        };
+      });
 
-    build.onLoad({ filter: /.*/, namespace: 'yaml' }, async (args) => {
-      const yamlContent = await fs.promises.readFile(args.path, 'utf8');
+      build.onLoad({ filter: /\.ya?ml$/, namespace: "yaml" }, async (args) => {
+        const yamlContent = await readFile(args.path, "utf8");
 
-      if (output === 'json') {
         const parsed = yaml.load(yamlContent, parserOptions);
         return {
-          loader: 'json',
-          contents: JSON.stringify(parsed)
+          loader: "json",
+          contents: JSON.stringify(parsed),
         };
-      }
+      });
 
-      return {
-        contents: yamlContent,
-        loader: 'text'
-      };
-    });
-  }
-});
+      build.onResolve({ filter: /\.ya?ml\?raw$/ }, (args) => {
+        if (args.resolveDir === "") return;
+
+        if (args.path.endsWith("?raw")) {
+          args.path = args.path.slice(0, -4);
+        }
+        return {
+          path: path.isAbsolute(args.path) ? args.path : path.join(args.resolveDir, args.path),
+          namespace: "yaml-raw",
+        };
+      });
+
+      build.onLoad({ filter: /\.ya?ml$/, namespace: "yaml-raw" }, async (args) => {
+        const yamlContent = await readFile(args.path, "utf8");
+
+        return {
+          loader: "text",
+          contents: yamlContent,
+        };
+      });
+    },
+  };
+}
 
 export default YAMLPlugin;

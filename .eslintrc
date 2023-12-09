@@ -1,7 +1,0 @@
-{
-  "root": true,
-  "extends": "@luxass/eslint-config",
-  "rules": {
-    "import/order": "off"
-  }
-}
