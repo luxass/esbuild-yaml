@@ -1,12 +1,10 @@
+import { copyFile } from "node:fs/promises";
 import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: ["./src/index.ts"],
   format: ["cjs", "esm"],
-  clean: true,
-  dts: {
-    banner: "/// <reference path=\"../yaml.d.ts\" />",
-  },
+  dts: true,
   treeshake: true,
   bundle: true,
   outExtension(ctx) {
@@ -14,8 +12,12 @@ export default defineConfig({
       js: ctx.format === "cjs" ? ".cjs" : ".mjs",
     };
   },
-  footer: {
-    js: "module.exports = module.exports.default;",
+  esbuildOptions: (options, ctx) => {
+    options.footer = {
+      js: ctx.format === "cjs" ? "module.exports = module.exports.default;" : "",
+    };
   },
-  cjsInterop: true,
+  async onSuccess() {
+    await copyFile("./src/yaml.d.ts", "./dist/yaml.d.ts");
+  },
 });
