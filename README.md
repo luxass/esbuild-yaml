@@ -1,4 +1,4 @@
-# esbuild-plugin-yaml
+# esbuild-yaml
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -50,7 +50,7 @@ build({
 
 ```yaml
 # config.yaml
-name: esbuild-plugin-yaml
+name: esbuild-yaml
 
 version: 1.0.0
 ```
@@ -61,8 +61,8 @@ version: 1.0.0
 import config from "./config.yaml"; // this will be converted to a JSON object
 import configRaw from "./config.yaml?raw"; // this will be the raw YAML string
 
-console.log(config); // { name: "esbuild-plugin-yaml", version: "1.0.0" }
-console.log(configRaw); // name: esbuild-plugin-yaml\nversion: 1.0.0
+console.log(config); // { name: "esbuild-yaml", version: "1.0.0" }
+console.log(configRaw); // name: esbuild-yaml\nversion: 1.0.0
 ```
 
 ## 📄 License
@@ -71,7 +71,7 @@ Published under [MIT License](./LICENSE).
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/@luxass/esbuild-plugin-yaml?style=flat&colorA=18181B&colorB=4169E1
-[npm-version-href]: https://npmjs.com/package/@luxass/esbuild-plugin-yaml
-[npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/esbuild-plugin-yaml?style=flat&colorA=18181B&colorB=4169E1
-[npm-downloads-href]: https://npmjs.com/package/@luxass/esbuild-plugin-yaml
+[npm-version-src]: https://img.shields.io/npm/v/@luxass/esbuild-yaml?style=flat&colorA=18181B&colorB=4169E1
+[npm-version-href]: https://npmjs.com/package/@luxass/esbuild-yaml
+[npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/esbuild-yaml?style=flat&colorA=18181B&colorB=4169E1
+[npm-downloads-href]: https://npmjs.com/package/@luxass/esbuild-yaml
