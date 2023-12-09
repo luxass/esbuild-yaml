@@ -10,7 +10,7 @@ This plugin allows you to import YAML files with ESBUILD
 ## 📦 Installation
 
 ```sh
-npm install --save-dev @luxass/esbuild-yaml
+npm install --save-dev esbuild-yaml
 ```
 
 ## 📚 Usage
@@ -19,7 +19,7 @@ Add this to your build file
 
 ```js
 import { build } from "esbuild";
-import { YAMLPlugin } from "@luxass/esbuild-yaml";
+import { YAMLPlugin } from "esbuild-yaml";
 
 const yourConfig = {};
 
@@ -33,29 +33,13 @@ build({
 
 ### TypeScript
 
-If you are using TypeScript, you will need to add a type declaration file to your project.
+If you are using TypeScript, you need to add the following to your `tsconfig.json` file:
 
-```ts
-// esbuild-yaml.d.ts
-
-declare module "*.yaml" {
-  const value: Record<string, unknown>;
-  export default value;
-}
-
-declare module "*.yml" {
-  const value: Record<string, unknown>;
-  export default value;
-}
-
-declare module "*.yaml?raw" {
-  const value: string;
-  export default value;
-}
-
-declare module "*.yml?raw" {
-  const value: string;
-  export default value;
+```json
+{
+  "compilerOptions": {
+    "types": "esbuild-yaml/types"
+  }
 }
 ```
 
@@ -64,7 +48,7 @@ declare module "*.yml?raw" {
 ```js
 // build.js
 import { build } from "esbuild";
-import { YAMLPlugin } from "@luxass/esbuild-yaml";
+import { YAMLPlugin } from "esbuild-yaml";
 
 const yourConfig = {};
 
@@ -99,7 +83,7 @@ Published under [MIT License](./LICENSE).
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/@luxass/esbuild-yaml?style=flat&colorA=18181B&colorB=4169E1
-[npm-version-href]: https://npmjs.com/package/@luxass/esbuild-yaml
-[npm-downloads-src]: https://img.shields.io/npm/dm/@luxass/esbuild-yaml?style=flat&colorA=18181B&colorB=4169E1
-[npm-downloads-href]: https://npmjs.com/package/@luxass/esbuild-yaml
+[npm-version-src]: https://img.shields.io/npm/v/esbuild-yaml?style=flat&colorA=18181B&colorB=4169E1
+[npm-version-href]: https://npmjs.com/package/esbuild-yaml
+[npm-downloads-src]: https://img.shields.io/npm/dm/esbuild-yaml?style=flat&colorA=18181B&colorB=4169E1
+[npm-downloads-href]: https://npmjs.com/package/esbuild-yaml

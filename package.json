@@ -1,5 +1,5 @@
 {
-  "name": "@luxass/esbuild-yaml",
+  "name": "esbuild-yaml",
   "version": "1.0.3",
   "description": "An esbuild plugin, that allows imports of YAML files",
   "type": "module",
@@ -36,6 +36,9 @@
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
+    },
+    "./types": {
+      "types": "./yaml.d.ts"
     },
     "./package.json": "./package.json"
   },
