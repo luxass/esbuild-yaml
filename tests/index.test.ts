@@ -20,7 +20,7 @@ it("expect yaml import to be a json object", async () => {
     ],
   });
 
-  const text = removeComments(result.outputFiles[0].text);
+  const text = removeComments(result.outputFiles[0]!.text);
 
   expect(text).toMatchInlineSnapshot(`
   "var yaml_config_default = { pluginDir: "./plugins", web: { enabled: true }, logging: { type: "stdout", level: "info" } };
@@ -47,7 +47,7 @@ it("expect yaml import to be a string", async () => {
     ],
   });
 
-  const text = removeComments(result.outputFiles[0].text);
+  const text = removeComments(result.outputFiles[0]!.text);
 
   expect(text).toMatchInlineSnapshot(`
     "var yaml_config_default = "pluginDir: ./plugins\\n\\nweb:\\n  enabled: true\\n\\nlogging:\\n  type: stdout\\n  level: info\\n";
@@ -73,7 +73,7 @@ it("expect yml import to be a json object", async () => {
     ],
   });
 
-  const text = removeComments(result.outputFiles[0].text);
+  const text = removeComments(result.outputFiles[0]!.text);
 
   expect(text).toMatchInlineSnapshot(`
   "var yml_config_default = { pluginDir: "./plugins", web: { enabled: true }, logging: { type: "stdout", level: "info" } };
@@ -100,7 +100,7 @@ it("expect yml import to be a string", async () => {
     ],
   });
 
-  const text = removeComments(result.outputFiles[0].text);
+  const text = removeComments(result.outputFiles[0]!.text);
 
   expect(text).toMatchInlineSnapshot(`
     "var yml_config_default = "pluginDir: ./plugins\\n\\nweb:\\n  enabled: true\\n\\nlogging:\\n  type: stdout\\n  level: info\\n";
