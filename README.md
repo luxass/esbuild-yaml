@@ -18,39 +18,51 @@ npm install --save-dev @luxass/esbuild-yaml
 Add this to your build file
 
 ```js
-const esbuild = require("esbuild");
-const YAMLPlugin = require("@luxass/esbuild-yaml");
+import { build } from "esbuild";
+import { YAMLPlugin } from "@luxass/esbuild-yaml";
 
 const yourConfig = {};
 
-esbuild.build({
+build({
   ...yourConfig,
-  plugins: [YAMLPlugin()]
+  plugins: [
+    YAMLPlugin()
+  ]
 });
 ```
 
-## 📚 Configuration
-
-> output defaults to `json`
+## 📖 Examples
 
 ```js
-const YAMLPlugin = require("@luxass/esbuild-yaml");
+// build.js
+import { build } from "esbuild";
+import { YAMLPlugin } from "@luxass/esbuild-yaml";
 
-// Output as text
-YAMLPlugin({
-  output: "text",
-  parserOptions: {
-    // Options from js-yaml
-  }
-});
+const yourConfig = {};
 
-// Output as JSON
-YAMLPlugin({
-  output: "json",
-  parserOptions: {
-    // Options from js-yaml
-  }
+build({
+  ...yourConfig,
+  plugins: [
+    YAMLPlugin()
+  ]
 });
+```
+
+```yaml
+# config.yaml
+name: esbuild-plugin-yaml
+
+version: 1.0.0
+```
+
+```ts
+// index.ts
+
+import config from "./config.yaml"; // this will be converted to a JSON object
+import configRaw from "./config.yaml?raw"; // this will be the raw YAML string
+
+console.log(config); // { name: "esbuild-plugin-yaml", version: "1.0.0" }
+console.log(configRaw); // name: esbuild-plugin-yaml\nversion: 1.0.0
 ```
 
 ## 📄 License

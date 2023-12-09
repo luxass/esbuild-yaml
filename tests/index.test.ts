@@ -30,7 +30,7 @@ it("expect yaml import to be a json object", async () => {
   `);
 });
 
-it("expect yaml import to be a string object", async () => {
+it("expect yaml import to be a string", async () => {
   const result = await build({
     entryPoints: ["<stdin>"],
     format: "esm",
@@ -83,7 +83,7 @@ it("expect yml import to be a json object", async () => {
   `);
 });
 
-it("expect yml import to be a string object", async () => {
+it("expect yml import to be a string", async () => {
   const result = await build({
     entryPoints: ["<stdin>"],
     format: "esm",
