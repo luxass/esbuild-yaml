@@ -1,6 +1,6 @@
 {
   "name": "esbuild-yaml",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "An esbuild plugin, that allows imports of YAML files",
   "type": "module",
   "author": {
