@@ -38,7 +38,9 @@ If you are using TypeScript, you need to add the following to your `tsconfig.jso
 ```json
 {
   "compilerOptions": {
-    "types": "esbuild-yaml/types"
+    "types": [
+      "esbuild-yaml/types"
+    ]
   }
 }
 ```
