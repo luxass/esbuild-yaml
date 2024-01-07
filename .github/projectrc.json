@@ -1,4 +1,7 @@
 {
   "$schema": "https://projectrc.luxass.dev/schema",
-  "website": true
+  "website": true,
+  "extras": {
+    "npm": true
+  }
 }
