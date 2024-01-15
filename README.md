@@ -3,14 +3,10 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 
-This plugin allows you to import YAML files with ESBUILD
-<br/>
-<br/>
-
 ## 📦 Installation
 
 ```sh
-npm install --save-dev esbuild-yaml
+npm install --save-dev esbuild-yaml esbuild
 ```
 
 ## 📚 Usage
