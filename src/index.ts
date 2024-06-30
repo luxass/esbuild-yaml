@@ -8,7 +8,7 @@ export interface YAMLPluginOptions {
    * Options to pass to the YAML parser.
    * @see https://github.com/nodeca/js-yaml
    */
-  parserOptions?: LoadOptions
+  parserOptions?: LoadOptions;
 }
 
 export function YAMLPlugin({ parserOptions }: YAMLPluginOptions = {}): Plugin {
