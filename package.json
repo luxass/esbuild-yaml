@@ -64,7 +64,7 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "@luxass/eslint-config": "^4.7.0",
+    "@luxass/eslint-config": "^4.8.0",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.14.9",
     "esbuild": "^0.21.5",
