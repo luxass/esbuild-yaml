@@ -4,7 +4,7 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 
 > [!NOTE]
-> If you are using different bundlers than esbuild, you could try [`unplugin-yaml`](https://github.com/luxass/unplugin-yaml).
+> If you are using different bundlers than esbuild, you could try [`unplugin-yaml`](https://github.com/luxass/unplugin-yaml)
 > which supports all different kinds of bundlers, powered by unplugin.
 
 ## 📦 Installation
