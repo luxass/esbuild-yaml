@@ -32,7 +32,7 @@ importers:
         version: 0.1.2(eslint@9.7.0)
       prettier:
         specifier: ^3.3.2
-        version: 3.3.2
+        version: 3.3.3
       tsup:
         specifier: ^8.1.0
         version: 8.1.0(postcss@8.4.41)(typescript@5.5.2)
@@ -1729,8 +1729,8 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier@3.3.2:
-    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+  prettier@3.3.3:
+    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3129,7 +3129,7 @@ snapshots:
       eslint: 9.7.0
       eslint-formatting-reporter: 0.0.0(eslint@9.7.0)
       eslint-parser-plain: 0.1.0
-      prettier: 3.3.2
+      prettier: 3.3.3
       synckit: 0.9.1
 
   eslint-plugin-import-x@3.1.0(eslint@9.7.0)(typescript@5.5.2):
@@ -3847,7 +3847,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier@3.3.2: {}
+  prettier@3.3.3: {}
 
   punycode@2.3.1: {}
 
