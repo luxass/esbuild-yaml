@@ -2,7 +2,7 @@ import { build } from "esbuild";
 import { expect, it } from "vitest";
 
 import YAMLPlugin from "../src";
-import { STDINPlugin, removeComments } from "./utils";
+import { removeComments, STDINPlugin } from "./utils";
 
 it("expect yaml import to be a json object", async () => {
   const result = await build({

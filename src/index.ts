@@ -1,6 +1,6 @@
+import type { Plugin } from "esbuild";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { Plugin } from "esbuild";
 import yaml, { type LoadOptions } from "js-yaml";
 
 export interface YAMLPluginOptions {
