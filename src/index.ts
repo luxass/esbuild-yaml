@@ -6,7 +6,7 @@ import { type DocumentOptions, parse, type ParseOptions, type SchemaOptions, typ
 export interface YAMLPluginOptions {
   /**
    * Options to pass to the YAML parser.
-   * @see https://github.com/nodeca/js-yaml
+   * @see https://eemeli.org/yaml/#options
    */
   parserOptions?: ParseOptions & DocumentOptions & SchemaOptions & ToJSOptions;
 }
