@@ -1,12 +1,30 @@
 import type { Plugin } from "esbuild";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { type DocumentOptions, parse, parseAllDocuments, type ParseOptions, type SchemaOptions, type ToJSOptions } from "yaml";
+import {
+  type DocumentOptions,
+  parse,
+  parseAllDocuments,
+  type ParseOptions,
+  type SchemaOptions,
+  type ToJSOptions,
+} from "yaml";
+
+type YAMLValue =
+  | number
+  | string
+  | boolean
+  | null
+  | { [key: string]: YAMLValue }
+  | YAMLValue[];
 
 export interface YAMLPluginOptions {
   /**
    * Options to pass to the YAML parser.
    * @see https://eemeli.org/yaml/#options
+   *
+   * NOTE:
+   * Options inside `ToJSOptions` only works if `type` is set to "single".
    */
   parserOptions?: ParseOptions & DocumentOptions & SchemaOptions & ToJSOptions;
 
@@ -15,13 +33,20 @@ export interface YAMLPluginOptions {
    * @default "single"
    */
   type?: "single" | "multi";
+
+  /**
+   * A function to transform the parsed YAML data.
+   * @param {YAMLValue} data The parsed YAML data.
+   * @param {string} filePath The path to the YAML file.
+   * @returns {YAMLValue | undefined} The transformed data.
+   */
+  transform?: (data: YAMLValue, filePath: string) => YAMLValue | undefined;
 }
 
 export function YAMLPlugin(options: YAMLPluginOptions = {}): Plugin {
   const type = options.type || "single";
   const parserOptions = options.parserOptions || {};
 
-  const parseFn = type === "single" ? parse : parseAllDocuments;
   return {
     name: "yaml",
     setup(build) {
@@ -37,10 +62,29 @@ export function YAMLPlugin(options: YAMLPluginOptions = {}): Plugin {
       build.onLoad({ filter: /\.ya?ml$/, namespace: "yaml" }, async (args) => {
         const yamlContent = await readFile(args.path, "utf8");
 
-        const parsed = parseFn(yamlContent, parserOptions);
+        let parsed = {};
+
+        if (type === "multi") {
+          parsed = parseAllDocuments(yamlContent, parserOptions).map((doc) => doc.toJSON());
+        } else {
+          parsed = parse(yamlContent, parserOptions);
+        }
+
+        let content = parsed;
+
+        if (options.transform != null && typeof options.transform === "function") {
+          const transformed = options.transform(content, args.path);
+
+          if (transformed != null) {
+            content = transformed;
+          }
+        }
+
+        const code = `var data = ${JSON.stringify(content, null, 2)}\n\n;`;
+
         return {
-          loader: "json",
-          contents: JSON.stringify(parsed),
+          loader: "js",
+          contents: `${code}\nexport default data;`,
         };
       });
 
