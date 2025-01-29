@@ -80,7 +80,7 @@ export function YAMLPlugin(options: YAMLPluginOptions = {}): Plugin {
           }
         }
 
-        const code = `var data = ${JSON.stringify(content, null, 2)}\n\n;`;
+        const code = `var data = ${JSON.stringify(content, null, 2)};\n\n`;
 
         return {
           loader: "js",
