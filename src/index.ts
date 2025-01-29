@@ -1,7 +1,7 @@
 import type { Plugin } from "esbuild";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { type DocumentOptions, parse, type ParseOptions, type SchemaOptions, type ToJSOptions } from "yaml";
+import { type DocumentOptions, parse, parseAllDocuments, type ParseOptions, type SchemaOptions, type ToJSOptions } from "yaml";
 
 export interface YAMLPluginOptions {
   /**
@@ -9,9 +9,19 @@ export interface YAMLPluginOptions {
    * @see https://eemeli.org/yaml/#options
    */
   parserOptions?: ParseOptions & DocumentOptions & SchemaOptions & ToJSOptions;
+
+  /**
+   * The type of YAML file to parse.
+   * @default "single"
+   */
+  type?: "single" | "multi";
 }
 
-export function YAMLPlugin({ parserOptions }: YAMLPluginOptions = {}): Plugin {
+export function YAMLPlugin(options: YAMLPluginOptions = {}): Plugin {
+  const type = options.type || "single";
+  const parserOptions = options.parserOptions || {};
+
+  const parseFn = type === "single" ? parse : parseAllDocuments;
   return {
     name: "yaml",
     setup(build) {
@@ -27,7 +37,7 @@ export function YAMLPlugin({ parserOptions }: YAMLPluginOptions = {}): Plugin {
       build.onLoad({ filter: /\.ya?ml$/, namespace: "yaml" }, async (args) => {
         const yamlContent = await readFile(args.path, "utf8");
 
-        const parsed = parse(yamlContent, parserOptions);
+        const parsed = parseFn(yamlContent, parserOptions);
         return {
           loader: "json",
           contents: JSON.stringify(parsed),

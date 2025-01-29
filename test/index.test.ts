@@ -1,5 +1,5 @@
 import { build } from "esbuild";
-import { expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import YAMLPlugin from "../src";
 import { removeComments, STDINPlugin } from "./utils";
@@ -108,4 +108,28 @@ it("expect yml import to be a string", async () => {
     console.log(yml_config_default);
     "
   `);
+});
+
+it("handle multi documents yaml files", async () => {
+  const result = await build({
+    entryPoints: ["<stdin>"],
+    format: "esm",
+    write: false,
+    bundle: true,
+    minifySyntax: false,
+    plugins: [
+      STDINPlugin(/* ts */ `
+        import YAMLConfig from "./multi/cronjobs.yaml";
+
+        console.log(YAMLConfig);
+      `),
+      YAMLPlugin({
+        type: "multi",
+      }),
+    ],
+  });
+
+  const text = removeComments(result.outputFiles[0]!.text);
+
+  expect(text).toMatchSnapshot();
 });
