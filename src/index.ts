@@ -1,14 +1,14 @@
 import type { Plugin } from "esbuild";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import yaml, { type LoadOptions } from "js-yaml";
+import { type DocumentOptions, parse, type ParseOptions, type SchemaOptions, type ToJSOptions } from "yaml";
 
 export interface YAMLPluginOptions {
   /**
    * Options to pass to the YAML parser.
    * @see https://github.com/nodeca/js-yaml
    */
-  parserOptions?: LoadOptions;
+  parserOptions?: ParseOptions & DocumentOptions & SchemaOptions & ToJSOptions;
 }
 
 export function YAMLPlugin({ parserOptions }: YAMLPluginOptions = {}): Plugin {
@@ -27,7 +27,7 @@ export function YAMLPlugin({ parserOptions }: YAMLPluginOptions = {}): Plugin {
       build.onLoad({ filter: /\.ya?ml$/, namespace: "yaml" }, async (args) => {
         const yamlContent = await readFile(args.path, "utf8");
 
-        const parsed = yaml.load(yamlContent, parserOptions);
+        const parsed = parse(yamlContent, parserOptions);
         return {
           loader: "json",
           contents: JSON.stringify(parsed),

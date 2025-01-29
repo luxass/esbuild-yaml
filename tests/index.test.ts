@@ -16,7 +16,7 @@ it("expect yaml import to be a json object", async () => {
       import YAMLConfig from "./yaml-config.yaml";
       console.log(YAMLConfig);
     `),
-      YAMLPlugin(),
+      YAMLPlugin({}),
     ],
   });
 
@@ -24,7 +24,7 @@ it("expect yaml import to be a json object", async () => {
 
   expect(text).toMatchInlineSnapshot(`
   "var yaml_config_default = { pluginDir: "./plugins", web: { enabled: true }, logging: { type: "stdout", level: "info" } };
-  
+
   console.log(yaml_config_default);
   "
   `);
@@ -77,7 +77,7 @@ it("expect yml import to be a json object", async () => {
 
   expect(text).toMatchInlineSnapshot(`
   "var yml_config_default = { pluginDir: "./plugins", web: { enabled: true }, logging: { type: "stdout", level: "info" } };
-  
+
   console.log(yml_config_default);
   "
   `);
