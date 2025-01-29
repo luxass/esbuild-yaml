@@ -1,5 +1,5 @@
 import { build } from "esbuild";
-import { describe, expect, it } from "vitest";
+import { expect, it } from "vitest";
 
 import YAMLPlugin from "../src";
 import { removeComments, STDINPlugin } from "./utils";
