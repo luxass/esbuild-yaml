@@ -13,9 +13,9 @@ it("expect yaml import to be a json object", async () => {
     minifySyntax: false,
     plugins: [
       STDINPlugin(/* ts */ `
-      import YAMLConfig from "./yaml-config.yaml";
-      console.log(YAMLConfig);
-    `),
+        import YAMLConfig from "./yaml-config.yaml";
+        console.log(YAMLConfig);
+      `),
       YAMLPlugin({}),
     ],
   });
@@ -39,10 +39,10 @@ it("expect yaml import to be a string", async () => {
     minifySyntax: false,
     plugins: [
       STDINPlugin(/* ts */ `
-      import YAMLConfigRaw from "./yaml-config.yaml?raw";
+        import YAMLConfigRaw from "./yaml-config.yaml?raw";
 
-      console.log(YAMLConfigRaw)
-    `),
+        console.log(YAMLConfigRaw)
+      `),
       YAMLPlugin(),
     ],
   });
@@ -65,10 +65,10 @@ it("expect yml import to be a json object", async () => {
     bundle: true,
     plugins: [
       STDINPlugin(/* ts */ `
-      import YMLConfig from "./yml-config.yml";
+        import YMLConfig from "./yml-config.yml";
 
-      console.log(YMLConfig);
-    `),
+        console.log(YMLConfig);
+      `),
       YAMLPlugin(),
     ],
   });
@@ -92,10 +92,10 @@ it("expect yml import to be a string", async () => {
     minifySyntax: false,
     plugins: [
       STDINPlugin(/* ts */ `
-      import YMLConfigRaw from "./yml-config.yml?raw";
+        import YMLConfigRaw from "./yml-config.yml?raw";
 
-      console.log(YMLConfigRaw)
-    `),
+        console.log(YMLConfigRaw)
+      `),
       YAMLPlugin(),
     ],
   });

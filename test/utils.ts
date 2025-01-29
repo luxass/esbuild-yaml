@@ -15,7 +15,7 @@ export function STDINPlugin(str: string): Plugin {
         return {
           contents: str,
           loader: "ts",
-          resolveDir: "./tests/fixtures",
+          resolveDir: "./test/fixtures",
         };
       });
     },
