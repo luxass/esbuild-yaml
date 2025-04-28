@@ -1,13 +1,12 @@
 import type { Plugin } from "esbuild";
+import type { DocumentOptions, ParseOptions, SchemaOptions, ToJSOptions } from "yaml";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import {
-  type DocumentOptions,
+
   parse,
   parseAllDocuments,
-  type ParseOptions,
-  type SchemaOptions,
-  type ToJSOptions,
+
 } from "yaml";
 
 type YAMLValue =
