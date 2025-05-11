@@ -42,7 +42,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: [22, 20, 18]
+        node: [20, 22, 24]
         esbuild: [latest, 0.23.0, 0.21.4, 0.19.2]
         os:
           - ubuntu-latest
