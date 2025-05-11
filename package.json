@@ -13,7 +13,7 @@
   "homepage": "https://github.com/luxass/esbuild-yaml",
   "repository": {
     "type": "git",
-    "url": "https://github.com/luxass/esbuild-yaml"
+    "url": "git+https://github.com/luxass/esbuild-yaml.git"
   },
   "bugs": {
     "url": "https://github.com/luxass/esbuild-yaml/issues"
@@ -30,7 +30,7 @@
     ".": {
       "import": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/index.mjs"
+        "default": "./dist/index.js"
       },
       "require": {
         "types": "./dist/index.d.cts",
@@ -43,7 +43,7 @@
     "./package.json": "./package.json"
   },
   "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
@@ -53,8 +53,8 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint . --report-unused-disable-directives",
@@ -73,7 +73,8 @@
     "eslint": "^9.26.0",
     "eslint-plugin-format": "^1.0.1",
     "prettier": "^3.5.3",
-    "tsup": "^8.4.0",
+    "publint": "^0.3.12",
+    "tsdown": "^0.11.3",
     "typescript": "^5.8.3",
     "vitest": "^3.1.3"
   }
