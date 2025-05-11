@@ -66,12 +66,12 @@
   "devDependencies": {
     "@luxass/eslint-config": "^4.18.1",
     "@types/node": "^20.17.5",
-    "esbuild": "^0.25.3",
-    "eslint": "^9.25.1",
+    "esbuild": "^0.25.4",
+    "eslint": "^9.26.0",
     "eslint-plugin-format": "^1.0.1",
     "prettier": "^3.5.3",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "vitest": "^3.1.3"
   }
 }
