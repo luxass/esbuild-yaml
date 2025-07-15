@@ -9,13 +9,13 @@ import {
 
 } from "yaml";
 
-type YAMLValue =
-  | number
-  | string
-  | boolean
-  | null
-  | { [key: string]: YAMLValue }
-  | YAMLValue[];
+type YAMLValue
+  = | number
+    | string
+    | boolean
+    | null
+    | { [key: string]: YAMLValue }
+    | YAMLValue[];
 
 export interface YAMLPluginOptions {
   /**
