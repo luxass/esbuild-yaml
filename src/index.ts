@@ -3,10 +3,8 @@ import type { DocumentOptions, ParseOptions, SchemaOptions, ToJSOptions } from "
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import {
-
   parse,
   parseAllDocuments,
-
 } from "yaml";
 
 type YAMLValue
