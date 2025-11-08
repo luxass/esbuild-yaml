@@ -33,7 +33,7 @@ jobs:
         run: npm install -g npm@latest
 
       - name: generate changelog
-        run: pnpx changelogithub
+        run: pnpm dlx changelogithub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
