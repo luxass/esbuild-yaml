@@ -8,7 +8,7 @@
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
-  "packageManager": "pnpm@10.19.0",
+  "packageManager": "pnpm@10.20.0",
   "license": "MIT",
   "homepage": "https://github.com/luxass/esbuild-yaml",
   "repository": {
@@ -57,7 +57,7 @@
     "dev": "tsdown --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint . --report-unused-disable-directives",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -67,15 +67,15 @@
     "yaml": "2.8.1"
   },
   "devDependencies": {
-    "@luxass/eslint-config": "6.0.1",
-    "@types/node": "20.19.8",
-    "esbuild": "0.25.11",
-    "eslint": "^9.38.0",
-    "eslint-plugin-format": "^1.0.2",
-    "prettier": "^3.6.2",
+    "@luxass/eslint-config": "6.0.3",
+    "@types/node": "22.19.0",
+    "esbuild": "0.25.12",
+    "eslint": "9.39.1",
+    "eslint-plugin-format": "1.0.2",
+    "prettier": "3.6.2",
     "publint": "0.3.15",
-    "tsdown": "0.15.10",
+    "tsdown": "0.16.1",
     "typescript": "5.9.3",
-    "vitest": "4.0.4"
+    "vitest": "4.0.8"
   }
 }
