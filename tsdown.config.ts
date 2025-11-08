@@ -7,6 +7,7 @@ export default defineConfig({
   dts: true,
   treeshake: true,
   publint: true,
+  exports: true,
   outputOptions: {
     exports: "named",
   },
