@@ -8,7 +8,7 @@
     "email": "lucasnrgaard@gmail.com",
     "url": "https://luxass.dev"
   },
-  "packageManager": "pnpm@10.30.1",
+  "packageManager": "pnpm@10.30.3",
   "license": "MIT",
   "homepage": "https://github.com/luxass/esbuild-yaml",
   "repository": {
@@ -58,8 +58,8 @@
     "yaml": "2.8.2"
   },
   "devDependencies": {
-    "@luxass/eslint-config": "7.2.0",
-    "@types/node": "22.19.0",
+    "@luxass/eslint-config": "7.2.1",
+    "@types/node": "22.19.13",
     "esbuild": "0.27.3",
     "eslint": "10.0.1",
     "eslint-plugin-format": "1.4.0",
@@ -71,7 +71,7 @@
   },
   "pnpm": {
     "overrides": {
-      "rolldown": "1.0.0-rc.5"
+      "rolldown": "1.0.0-rc.6"
     }
   }
 }
