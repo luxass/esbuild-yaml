@@ -4,3 +4,6 @@ minimumReleaseAge: 5760
 trustPolicy: no-downgrade
 strictDepBuilds: true
 blockExoticSubdeps: true
+shellEmulator: true
+overrides:
+  rolldown: 1.0.0-rc.5
