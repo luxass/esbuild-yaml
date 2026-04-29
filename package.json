@@ -55,7 +55,7 @@
     "esbuild": ">=0.19.0"
   },
   "dependencies": {
-    "yaml": "2.8.2"
+    "yaml": "2.8.3"
   },
   "devDependencies": {
     "@luxass/eslint-config": "7.2.0",
