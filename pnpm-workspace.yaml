@@ -7,3 +7,6 @@ blockExoticSubdeps: true
 shellEmulator: true
 overrides:
   rolldown: 1.0.0-rc.5
+minimumReleaseAgeExclude:
+  # Renovate security update: yaml@2.8.3
+  - yaml@2.8.3
