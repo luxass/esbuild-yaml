@@ -7,3 +7,6 @@ blockExoticSubdeps: true
 shellEmulator: true
 overrides:
   rolldown: 1.0.0-rc.5
+minimumReleaseAgeExclude:
+  # Renovate security update: esbuild@0.28.1
+  - esbuild@0.28.1
