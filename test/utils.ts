@@ -4,6 +4,7 @@ export function STDINPlugin(str: string): Plugin {
   return {
     name: "esbuild-stdin",
     setup(build) {
+      // oxlint-disable-next-line eslint/require-unicode-regexp -- esbuild filters must be Go-compatible regexes
       build.onResolve({ filter: /^<stdin>$/ }, () => {
         return {
           path: "test.ts",
@@ -11,6 +12,7 @@ export function STDINPlugin(str: string): Plugin {
         };
       });
 
+      // oxlint-disable-next-line eslint/require-unicode-regexp -- esbuild filters must be Go-compatible regexes
       build.onLoad({ filter: /.*/, namespace: "stdin" }, async () => {
         return {
           contents: str,
@@ -23,5 +25,8 @@ export function STDINPlugin(str: string): Plugin {
 }
 
 export function removeComments(str: string): string {
-  return str.split("\n").filter((line) => !line.startsWith("// ")).join("\n");
+  return str
+    .split("\n")
+    .filter((line) => !line.startsWith("// "))
+    .join("\n");
 }

@@ -12,15 +12,18 @@ it("expect yaml import to be a json object", async () => {
     bundle: true,
     minifySyntax: false,
     plugins: [
-      STDINPlugin(/* ts */ `
+      STDINPlugin(
+        // ts
+        `
         import YAMLConfig from "./yaml-config.yaml";
         console.log(YAMLConfig);
-      `),
+      `,
+      ),
       YAMLPlugin({}),
     ],
   });
 
-  const text = removeComments(result.outputFiles[0]!.text);
+  const text = removeComments(result.outputFiles[0].text);
 
   expect(text).toMatchInlineSnapshot(`
     "var data = {
@@ -48,16 +51,19 @@ it("expect yaml import to be a string", async () => {
     bundle: true,
     minifySyntax: false,
     plugins: [
-      STDINPlugin(/* ts */ `
+      STDINPlugin(
+        // ts
+        `
         import YAMLConfigRaw from "./yaml-config.yaml?raw";
 
         console.log(YAMLConfigRaw)
-      `),
+      `,
+      ),
       YAMLPlugin(),
     ],
   });
 
-  const text = removeComments(result.outputFiles[0]!.text);
+  const text = removeComments(result.outputFiles[0].text);
 
   expect(text).toMatchInlineSnapshot(`
     "var yaml_config_default = "pluginDir: ./plugins\\n\\nweb:\\n  enabled: true\\n\\nlogging:\\n  type: stdout\\n  level: info\\n";
@@ -74,16 +80,19 @@ it("expect yml import to be a json object", async () => {
     write: false,
     bundle: true,
     plugins: [
-      STDINPlugin(/* ts */ `
+      STDINPlugin(
+        // ts
+        `
         import YMLConfig from "./yml-config.yml";
 
         console.log(YMLConfig);
-      `),
+      `,
+      ),
       YAMLPlugin(),
     ],
   });
 
-  const text = removeComments(result.outputFiles[0]!.text);
+  const text = removeComments(result.outputFiles[0].text);
 
   expect(text).toMatchInlineSnapshot(`
     "var data = {
@@ -111,16 +120,19 @@ it("expect yml import to be a string", async () => {
     bundle: true,
     minifySyntax: false,
     plugins: [
-      STDINPlugin(/* ts */ `
+      STDINPlugin(
+        // ts
+        `
         import YMLConfigRaw from "./yml-config.yml?raw";
 
         console.log(YMLConfigRaw)
-      `),
+      `,
+      ),
       YAMLPlugin(),
     ],
   });
 
-  const text = removeComments(result.outputFiles[0]!.text);
+  const text = removeComments(result.outputFiles[0].text);
 
   expect(text).toMatchInlineSnapshot(`
     "var yml_config_default = "pluginDir: ./plugins\\n\\nweb:\\n  enabled: true\\n\\nlogging:\\n  type: stdout\\n  level: info\\n";
@@ -138,18 +150,21 @@ it("handle multi documents yaml files", async () => {
     bundle: true,
     minifySyntax: false,
     plugins: [
-      STDINPlugin(/* ts */ `
+      STDINPlugin(
+        // ts
+        `
         import YAMLConfig from "./multi/cronjobs.yaml";
 
         console.log(YAMLConfig);
-      `),
+      `,
+      ),
       YAMLPlugin({
         type: "multi",
       }),
     ],
   });
 
-  const text = removeComments(result.outputFiles[0]!.text);
+  const text = removeComments(result.outputFiles[0].text);
 
   expect(text).toMatchSnapshot();
 });
@@ -162,11 +177,14 @@ it("handle transform", async () => {
     bundle: true,
     minifySyntax: false,
     plugins: [
-      STDINPlugin(/* ts */ `
+      STDINPlugin(
+        // ts
+        `
         import YAMLConfig from "./yaml-config.yaml";
 
         console.log(YAMLConfig);
-      `),
+      `,
+      ),
       YAMLPlugin({
         transform: (data, filePath) => {
           if (filePath.endsWith("yaml-config.yaml") && data != null) {
@@ -174,12 +192,13 @@ it("handle transform", async () => {
               this: "is transformed",
             };
           }
+          return data;
         },
       }),
     ],
   });
 
-  const text = removeComments(result.outputFiles[0]!.text);
+  const text = removeComments(result.outputFiles[0].text);
 
   expect(text).toMatchInlineSnapshot(`
     "var data = {
