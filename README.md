@@ -25,9 +25,7 @@ const yourConfig = {};
 
 build({
   ...yourConfig,
-  plugins: [
-    YAMLPlugin()
-  ]
+  plugins: [YAMLPlugin()],
 });
 ```
 
@@ -38,9 +36,7 @@ If you are using TypeScript, you need to add the following to your `tsconfig.jso
 ```json
 {
   "compilerOptions": {
-    "types": [
-      "esbuild-yaml/types"
-    ]
+    "types": ["esbuild-yaml/types"]
   }
 }
 ```
@@ -56,9 +52,7 @@ const yourConfig = {};
 
 build({
   ...yourConfig,
-  plugins: [
-    YAMLPlugin()
-  ]
+  plugins: [YAMLPlugin()],
 });
 ```
 
