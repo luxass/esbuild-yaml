@@ -10,7 +10,7 @@ catalogs:
     yaml: 2.8.4
 
   dev:
-    esbuild: 0.28.0
+    esbuild: 0.28.1
     oxfmt: 0.67.0
     oxlint: 1.82.0
     oxlint-tsgolint: 7.0.2001
@@ -26,3 +26,6 @@ catalogs:
 
 onlyBuiltDependencies:
   - esbuild
+minimumReleaseAgeExclude:
+  # Renovate security update: esbuild@0.28.1
+  - esbuild@0.28.1
