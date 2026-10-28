@@ -22,7 +22,7 @@ catalogs:
     vitest: 5.0.0
 
   types:
-    "@types/node": 24.13.4
+    "@types/node": 26.6.5
 
 onlyBuiltDependencies:
   - esbuild
