@@ -12,8 +12,8 @@ catalogs:
   dev:
     esbuild: 0.28.2
     oxfmt: 0.67.0
-    oxlint: 1.82.0
-    oxlint-tsgolint: 7.0.2001
+    oxlint: 1.90.0
+    oxlint-tsgolint: 7.0.2005
     publint: 0.3.24
     tsdown: 0.23.0
     typescript: 7.0.2
